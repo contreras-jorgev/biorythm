@@ -1,8 +1,7 @@
 
-const createBiorythm = () => {
+const createBiorythm = (birthdate) => {
     // Calculate the Biorythm series (data points) for the Chart
     let today = new Date();
-    let birthdate = new Date(2004,1,18) // Note: month starts at 0. February 18, 2004
     const height = 10
     
     let bioSeries = [];
@@ -78,5 +77,3 @@ const getBiorythm = (birthdate, target, unit = 5) => {
         intellectual
     }
 };
-
-// export { createBiorythm };
