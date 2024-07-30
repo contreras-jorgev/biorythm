@@ -1,10 +1,10 @@
+let bioSeries = [];
 
 const createBiorythm = (birthdate) => {
     // Calculate the Biorythm series (data points) for the Chart
     let today = new Date();
     const height = 10
     
-    let bioSeries = [];
     bioSeries[0] = []; // Data series for Intellectual
     bioSeries[1] = []; // Data series for Physical
     bioSeries[2] = []; // Data series for Emotional
@@ -25,7 +25,8 @@ const createBiorythm = (birthdate) => {
     if ( chartEl ) {
         // Create chart instance
         const chart = am4core.create(CHART_ID, am4charts.XYChart);
-        // chart.paddingRight = 20;
+        am4core.options.autoDispose = true;
+                // chart.paddingRight = 20;
 
         // Create axes
         const dateAxis = chart.xAxes.push(new am4charts.DateAxis());
