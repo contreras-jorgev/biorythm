@@ -1,0 +1,14 @@
+.dark-page {
+    background-color: rgb(44, 44, 44);
+    color: rgb(206, 206, 206);
+    text-align:center;
+}
+
+.bio-result {
+    
+    text-align:center;
+    background-color: rgb(252, 203, 248);
+    width: 80%;
+    margin: 0 auto;
+    /* height: 400px; */
+}
