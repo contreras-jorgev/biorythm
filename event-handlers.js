@@ -1,10 +1,10 @@
 const handleDateInputChange = (e) => {
     let birthdayEl = e.target;
     if ( birthdayEl ) {
-        let birthdateStr = birthdayEl.value;
+        let birthdayStr = birthdayEl.value;
 
-        let birthdate = new Date(birthdateStr); // Bug: birthdate is one day off.
-        createBiorythm(birthdate);
+        let birthday = new Date(birthdayStr); // Bug: birthday is one day off.
+        createBiorythm(birthday);
     }
 }
 
