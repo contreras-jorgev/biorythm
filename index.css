@@ -15,3 +15,12 @@
 .vertical-padding {
     padding-top: 3em;
 }
+
+.center-aligned {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.left-aligned {
+    text-align: left;
+}

@@ -7,3 +7,13 @@ const handleDateInputChange = (e) => {
         createBiorythm(birthdate);
     }
 }
+
+const handleNameInputChange = (e) => {
+    let nameEl = e.target;
+    let titleEl = document.getElementById('mytitle');
+
+    if ( nameEl && titleEl ) {
+        titleEl.innerText = `${nameEl.value}'s Biorythm`;
+    }
+
+}
