@@ -7,7 +7,7 @@
 .bio-result {
     
     text-align:center;
-    background-color: rgb(252, 203, 248);
+    background-color: rgb(255,255,255);
     width: 80%;
     margin: 0 auto;
 }
@@ -23,4 +23,5 @@
 
 .left-aligned {
     text-align: left;
+    display: inline-block;
 }
