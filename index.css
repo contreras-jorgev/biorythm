@@ -33,3 +33,7 @@ label {
 .wider {
     width: 20em;
 }
+
+.narrower {
+    width: 2em;
+} 
