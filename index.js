@@ -1,6 +1,8 @@
-let dateInput = document.getElementById("birthdate");
-if (dateInput)
-    dateInput.addEventListener("change", handleDateInputChange);
-
-// let birthdate = new Date(2004,1,18) // Note: month starts at 0. February 18, 2004
-// createBiorythm(birthdate);
+let myform = document.forms[0];
+if (myform.elements.birthdate) {
+    myform.elements.birthdate.addEventListener("change", handleDateInputChange);
+}
+let ageEl = myform.elements.age;
+if (ageEl.parentElement) {
+    ageEl.parentElement.style.display = 'none';
+}

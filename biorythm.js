@@ -63,6 +63,13 @@ const createBiorythm = (birthdate) => {
         intellectualSeries.data = bioSeries[0];
         physicalSeries.data = bioSeries[1];
         emotionalSeries.data = bioSeries[2];
+
+        let ageEl = myform.elements.age;
+        if (ageEl.parentElement) {
+            ageEl.parentElement.style.display = 'block';
+        }
+        // compute the age
+        ageEl.value = Math.floor((today - birthdate) / (1000 * 60 * 60 * 24 * 365.25)); 
     }
 }
 
