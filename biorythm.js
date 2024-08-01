@@ -10,14 +10,14 @@ const createBiorhythm = (birthday) => {
     bioSeries[1] = []; // Data series for Physical
     bioSeries[2] = []; // Data series for Emotional
     
-    for (let i = 0 ; i < 60 ; i++) {
+    for (let i = -7; i <= 7; i++) {
         let target = new Date(today.getTime());
-        target.setDate(target.getDate() + i - 20);
+        target.setDate(target.getDate() + i);
         let bioValues = getBiorhythm(birthday, target, height / 2);
     
-        bioSeries[0].push( { targetDate: target, bioValue: bioValues.intellectual} );
-        bioSeries[1].push( { targetDate: target, bioValue: bioValues.physical} );
-        bioSeries[2].push( { targetDate: target, bioValue: bioValues.emotional} );
+        bioSeries[0].push({ targetDate: target, bioValue: bioValues.intellectual });
+        bioSeries[1].push({ targetDate: target, bioValue: bioValues.physical });
+        bioSeries[2].push({ targetDate: target, bioValue: bioValues.emotional });
     }
     
     const CHART_ID = 'bio-chart';
