@@ -44,7 +44,7 @@ const createBiorhythm = (birthday) => {
         valueAxis.extraMin = 0.1; // 10% extra space at the bottom
         valueAxis.extraMax = 0.1; // 10% extra space at the top
         
-        const addSeries = (color, dataField) => {
+        const addSeries = (color, dataField, bioValueType) => {
             const series = chart.series.push(new am4charts.LineSeries());
             series.dataFields.dateX = 'targetDate';
             series.dataFields.valueY = 'bioValue';
@@ -65,13 +65,13 @@ const createBiorhythm = (birthday) => {
             });
     
             // Add tooltip to bullet
-            bullet.tooltipText = `{targetDate.formatDate("MMM dd")}: {bioValue}`;
+            bullet.tooltipText = bioValueType + ` for Today: {bioValue}`;
             // bullet.tooltip.pointerOrientation = "vertical";
         };
         
-        addSeries('rgb(255,255,0)', bioSeries[0], 'intellectual'); // Yellow
-        addSeries('rgb(255,0,0)', bioSeries[1], 'physical'); // Red
-        addSeries('rgb(0,0,255)', bioSeries[2], 'emotional'); // Blue
+        addSeries('rgb(255,255,0)', bioSeries[0], 'Intellectual'); // Yellow
+        addSeries('rgb(255,0,0)', bioSeries[1], 'Physical'); // Red
+        addSeries('rgb(0,0,255)', bioSeries[2], 'Emotional'); // Blue
 
         // If there is an Age output field, compute Age and set it.
         let ageEl = myform.elements.age;
