@@ -27,54 +27,58 @@ const createBiorhythm = (birthday) => {
         // Create chart instance
         const chart = am4core.create(CHART_ID, am4charts.XYChart);
         am4core.options.autoDispose = true;
-
+        
         // Create axes
         const dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         dateAxis.dataFields.category = 'targetDate';
-        dateAxis.dateFormat = 'MMM';  
-
+        dateAxis.dateFormat = 'MMM';
+    
         valueAxis.dataFields.valueY = 'date';
         valueAxis.title.text = 'Bio values';
-
+    
         // Disable labels on the value axis
         valueAxis.renderer.labels.template.disabled = true;
-
+        
         // Add extra space at the top and bottom of the value axis
         valueAxis.extraMin = 0.1; // 10% extra space at the bottom
         valueAxis.extraMax = 0.1; // 10% extra space at the top
+        
+        const addSeries = (color, dataField) => {
+            const series = chart.series.push(new am4charts.LineSeries());
+            series.dataFields.dateX = 'targetDate';
+            series.dataFields.valueY = 'bioValue';
 
-        const intellectualSeries = chart.series.push(new am4charts.LineSeries());
-        intellectualSeries.dataFields.dateX = 'targetDate';
-        intellectualSeries.dataFields.valueY = 'bioValue';
-        intellectualSeries.tensionX = 1;
-        intellectualSeries.stroke = am4core.color('rgb(255,255,0)'); // Yellow:  rgb(Red, Green, Blue)
-        intellectualSeries.strokeWidth = SINE_STROKE_WIDTH;
+            series.data = dataField;
+            // series.tensionX = 1;
+            series.stroke = am4core.color(color);
+            series.strokeWidth = SINE_STROKE_WIDTH;
+    
+            // Add bullet
+            const bullet = series.bullets.push(new am4charts.CircleBullet());
+            bullet.circle.radius = 5;
+            bullet.circle.fill = am4core.color(color);
+    
+            // Configure bullet to only appear on today's date
+            bullet.adapter.add("hidden", function(hidden, target) {
+                return target.dataItem.dataContext.targetDate.getTime() !== today.getTime();
+            });
+    
+            // Add tooltip to bullet
+            bullet.tooltipText = `{targetDate.formatDate("MMM dd")}: {bioValue}`;
+            // bullet.tooltip.pointerOrientation = "vertical";
+        };
+        
+        addSeries('rgb(255,255,0)', bioSeries[0], 'intellectual'); // Yellow
+        addSeries('rgb(255,0,0)', bioSeries[1], 'physical'); // Red
+        addSeries('rgb(0,0,255)', bioSeries[2], 'emotional'); // Blue
 
-        const physicalSeries = chart.series.push(new am4charts.LineSeries());
-        physicalSeries.dataFields.dateX = 'targetDate';
-        physicalSeries.dataFields.valueY = 'bioValue';
-        physicalSeries.tensionX = 1;
-        physicalSeries.stroke = am4core.color('rgb(255,0,0)'); // Red 
-        physicalSeries.strokeWidth = SINE_STROKE_WIDTH;
-
-        const emotionalSeries = chart.series.push(new am4charts.LineSeries());
-        emotionalSeries.dataFields.dateX = 'targetDate';
-        emotionalSeries.dataFields.valueY = 'bioValue';
-        emotionalSeries.tensionX = 1;
-        emotionalSeries.stroke = am4core.color('rgb(0,0,255)'); // Blue
-        emotionalSeries.strokeWidth = SINE_STROKE_WIDTH;      
-
-        intellectualSeries.data = bioSeries[0];
-        physicalSeries.data = bioSeries[1];
-        emotionalSeries.data = bioSeries[2];
-
+        // If there is an Age output field, compute Age and set it.
         let ageEl = myform.elements.age;
         if (ageEl.parentElement) {
+            ageEl.value = Math.floor((today - birthday) / (1000 * 60 * 60 * 24 * 365.25)); 
             ageEl.parentElement.style.display = 'block';
         }
-        // compute the age
-        ageEl.value = Math.floor((today - birthday) / (1000 * 60 * 60 * 24 * 365.25)); 
     }
 }
 
