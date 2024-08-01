@@ -1,4 +1,5 @@
 let bioSeries = [];
+const SINE_STROKE_WIDTH = 5;
 
 const createBiorhythm = (birthday) => {
     // Calculate the Biorhythm series (data points) for the Chart
@@ -40,7 +41,7 @@ const createBiorhythm = (birthday) => {
 
         valueAxis.dataFields.valueY = 'date';
         valueAxis.title.text = 'Bio values';
-        
+
         // Disable labels on the value axis
         valueAxis.renderer.labels.template.disabled = true;
 
@@ -49,19 +50,21 @@ const createBiorhythm = (birthday) => {
         intellectualSeries.dataFields.valueY = 'bioValue';
         intellectualSeries.tensionX = 1;
         intellectualSeries.stroke = am4core.color('rgb(255,255,0)'); // Yellow:  rgb(Red, Green, Blue)
+        intellectualSeries.strokeWidth = SINE_STROKE_WIDTH;
 
         const physicalSeries = chart.series.push(new am4charts.LineSeries());
         physicalSeries.dataFields.dateX = 'targetDate';
         physicalSeries.dataFields.valueY = 'bioValue';
         physicalSeries.tensionX = 1;
         physicalSeries.stroke = am4core.color('rgb(255,0,0)'); // Red 
+        physicalSeries.strokeWidth = SINE_STROKE_WIDTH;
 
         const emotionalSeries = chart.series.push(new am4charts.LineSeries());
         emotionalSeries.dataFields.dateX = 'targetDate';
         emotionalSeries.dataFields.valueY = 'bioValue';
         emotionalSeries.tensionX = 1;
         emotionalSeries.stroke = am4core.color('rgb(0,0,255)'); // Blue
-        
+        emotionalSeries.strokeWidth = SINE_STROKE_WIDTH;      
 
         intellectualSeries.data = bioSeries[0];
         physicalSeries.data = bioSeries[1];
