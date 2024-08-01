@@ -9,6 +9,7 @@
     background-color: rgb(255,255,255);
     width: 80%;
     margin: 0 auto;
+    height: 50vh; /* Adjust this value to make the chart taller */
 }
 
 .vertical-padding {
