@@ -27,17 +27,12 @@ const createBiorhythm = (birthday) => {
         // Create chart instance
         const chart = am4core.create(CHART_ID, am4charts.XYChart);
         am4core.options.autoDispose = true;
-                // chart.paddingRight = 20;
 
         // Create axes
         const dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         dateAxis.dataFields.category = 'targetDate';
-        dateAxis.dateFormat = 'MMM';   
-        dateAxis.renderer.minGridDistance = 50;
-        dateAxis.renderer.grid.template.location = 0.5;
-        dateAxis.startLocation = 0.5;
-        dateAxis.endLocation = 0.5;
+        dateAxis.dateFormat = 'MMM';  
 
         valueAxis.dataFields.valueY = 'date';
         valueAxis.title.text = 'Bio values';
