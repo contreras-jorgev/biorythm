@@ -1,7 +1,7 @@
 let bioSeries = [];
 
-const createBiorythm = (birthday) => {
-    // Calculate the Biorythm series (data points) for the Chart
+const createBiorhythm = (birthday) => {
+    // Calculate the Biorhythm series (data points) for the Chart
     let today = new Date();
     const height = 10
     
