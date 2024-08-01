@@ -13,7 +13,7 @@ const createBiorhythm = (birthday) => {
     for (let i = 0 ; i < 60 ; i++) {
         let target = new Date(today.getTime());
         target.setDate(target.getDate() + i - 20);
-        let bioValues = getBiorythm(birthday, target, height / 2);
+        let bioValues = getBiorhythm(birthday, target, height / 2);
     
         bioSeries[0].push( { targetDate: target, bioValue: bioValues.intellectual} );
         bioSeries[1].push( { targetDate: target, bioValue: bioValues.physical} );
@@ -78,7 +78,7 @@ const createBiorhythm = (birthday) => {
     }
 }
 
-const getBiorythm = (birthday, target, unit = 5) => {
+const getBiorhythm = (birthday, target, unit = 5) => {
     const diff = target.getTime() - birthday.getTime();
     const days = diff/(1000*60*60*24);
     const physical = Math.sin(2 * Math.PI * days / 23)*unit;
