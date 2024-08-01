@@ -32,7 +32,7 @@ const createBiorhythm = (birthday) => {
         const dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         dateAxis.dataFields.category = 'targetDate';
-        dateAxis.dateFormat = 'MMM';   // TODO: find out date format Jul 3
+        dateAxis.dateFormat = 'MMM';   
         dateAxis.renderer.minGridDistance = 50;
         dateAxis.renderer.grid.template.location = 0.5;
         dateAxis.startLocation = 0.5;
@@ -40,6 +40,9 @@ const createBiorhythm = (birthday) => {
 
         valueAxis.dataFields.valueY = 'date';
         valueAxis.title.text = 'Bio values';
+        
+        // Disable labels on the value axis
+        valueAxis.renderer.labels.template.disabled = true;
 
         const intellectualSeries = chart.series.push(new am4charts.LineSeries());
         intellectualSeries.dataFields.dateX = 'targetDate';
