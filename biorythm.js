@@ -45,6 +45,10 @@ const createBiorhythm = (birthday) => {
         // Disable labels on the value axis
         valueAxis.renderer.labels.template.disabled = true;
 
+        // Add extra space at the top and bottom of the value axis
+        valueAxis.extraMin = 0.1; // 10% extra space at the bottom
+        valueAxis.extraMax = 0.1; // 10% extra space at the top
+
         const intellectualSeries = chart.series.push(new am4charts.LineSeries());
         intellectualSeries.dataFields.dateX = 'targetDate';
         intellectualSeries.dataFields.valueY = 'bioValue';
