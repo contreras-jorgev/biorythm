@@ -65,7 +65,7 @@ const createBiorhythm = (birthday) => {
             });
     
             // Add tooltip to bullet
-            bullet.tooltipText = bioValueType + ` for Today: {bioValue}`;
+            bullet.tooltipText = `Today's ${bioValueType} value: {bioValue}`;
             // bullet.tooltip.pointerOrientation = "vertical";
         };
         
